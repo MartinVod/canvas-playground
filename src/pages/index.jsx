@@ -64,9 +64,9 @@ const Description = styled.p`
     sm:w-full
     `}
 `;
-const Yellow = styled.span`
+const Pink = styled.span`
   ${tw`
-    text-frame-yellow
+    text-pink-500	
     `}
 `;
 
@@ -79,23 +79,23 @@ const SlimText = styled.span`
 
 const Home = () => (
   <>
-    <Helmet>
-      <title>Frameboi | HackNITR 3.0</title>
-      <meta name='Frameboi | HackNITR 3.0' contect='Virtual badges for HackNITR 3.0' />
-    </Helmet>
+    {/* <Helmet> */}
+    {/* <title>Frameboi | HackNITR 3.0</title> */}
+    {/* <meta name='Frameboi | HackNITR 3.0' contect='Virtual badges for HackNITR 3.0' /> */}
+    {/* </Helmet> */}
     <Container>
-      <Head />
-      <FrameImg src={home.frame.src} alt={home.frame.alt} />
-      <SubHeading>{home.subheading}</SubHeading>
+      {/* <Head /> */}
+      {/* <FrameImg src={home.frame.src} alt={home.frame.alt} /> */}
+      {/* <SubHeading>{home.subheading}</SubHeading> */}
       <Heading>
         <h1>
-          <Yellow>FRAME</Yellow>
+          <Pink>Cheers</Pink>
         </h1>
-        <SlimText>BOI</SlimText>
+        <SlimText>Magnet Styling</SlimText>
       </Heading>
-      <Description>{home.description}</Description>
+      <Description>שמור לעמוד התחברות באמצעות שם משתמש וסיסמה אם יהיה צורך בכך</Description>
       <Link to='/frame'>
-        <Button>{home.button}</Button>
+        <Button>המשך</Button>
       </Link>
     </Container>
   </>

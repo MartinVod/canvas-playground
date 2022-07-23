@@ -31,7 +31,7 @@ const C1 = styled.div`
   mlg:mt-0
   `}
 
-  background-color: #333333;
+  background-color: #ffffff;
   padding: 1rem;
   border-radius: 4px;
   width: 100%;
@@ -47,6 +47,8 @@ const C4 = styled.div`
 
 const C3 = styled.div`
   ${tw`
+
+
   `}
 `;
 
@@ -115,9 +117,12 @@ const SlimText = styled.span`
 `;
 
 const FRAMES = {
-  ONE: frameData.frames.ONE,
-  TWO: frameData.frames.TWO,
-  THREE: frameData.frames.THREE,
+  // ONE: frameData.frames.ONE,
+  // TWO: frameData.frames.TWO,
+  // THREE: frameData.frames.THREE,
+  FOUR: frameData.frames.FOUR,
+  FIVE: frameData.frames.FIVE,
+  SIX: frameData.frames.SIX,
 };
 
 const align = ['center', 'left', 'right'];
@@ -128,8 +133,8 @@ const Frame = () => {
   const [uploadedImage, setUploadedImage] = useState();
   const [height, setHeight] = useState();
   const [width, setWidth] = useState();
-  const [userName, setUserName] = useState('Your Name');
-  const [guildName, setGuildName] = useState('Guild Name');
+  const [userName, setUserName] = useState('17.10.22');
+  const [guildName, setGuildName] = useState('דני ודנה');
   const [checked, setchecked] = useState(false);
   const [checkedGuild, setcheckedGuild] = useState(false);
   const [fontFamily, setFontFamily] = useState(null);
@@ -160,8 +165,8 @@ const Frame = () => {
   return (
     <>
       <Helmet>
-        <title>Frameboi | HackNITR 3.0</title>
-        <meta name='Frameboi | HackNITR 3.0' contect='Virtual badges for HackNITR 3.0' />
+        <title>Cheers - magnets background</title>
+        {/* <meta name='' /> */}
       </Helmet>
 
       <Container>

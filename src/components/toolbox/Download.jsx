@@ -46,13 +46,13 @@ const Download = ({ stageRef }) => {
 
   const handleDownload = () => {
     const dataURL = stageRef.current.toDataURL({ pixelRatio: 4 });
-    downloadURI(dataURL, 'Frameboi.png');
+    downloadURI(dataURL, 'cheers.png');
   };
 
   return (
     <Container>
       <DownloadContainer>
-        <Button onClick={handleDownload}>Download</Button>
+        <Button onClick={handleDownload}>הורד</Button>
       </DownloadContainer>
     </Container>
   );

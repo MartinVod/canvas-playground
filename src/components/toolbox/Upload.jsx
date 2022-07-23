@@ -26,7 +26,7 @@ const Heading1 = styled.h1`
   ${tw`
   font-normal
   pl-4
-  text-left
+  text-center
   mt-2
   text-color-bright
  `}
@@ -42,7 +42,7 @@ const Description = styled.div`
   col-span-2
   py-2
   pl-4
-  text-left
+  text-right
   mb-2
   leading-4
   `}
@@ -69,10 +69,10 @@ const Button = styled.button`
 
 const Upload = ({ setUploadedImage, setHeight, setWidth }) => (
   <Container1>
-    <Heading1>Upload Image</Heading1>
+    <Heading1>העלה תמונה</Heading1>
     <Section1>
       <Description>
-        Click on the upload icon to upload image. You can repeat this step to choose another image.
+        לחץ על האייקון לבחור תמונה - ניתן לחזור על הפעולה על מנת להעלות ּתמונה חדשה
       </Description>
       <div>
         <ButtonContainer>

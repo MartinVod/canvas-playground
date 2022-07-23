@@ -65,16 +65,16 @@ const FormFillup = styled.input`
   font-size: 1rem;
 `;
 
-const CustomText = ({ 
-  userName, 
-  guildName, 
-  setUsername, 
-  setGuildname, 
-  checked, 
+const CustomText = ({
+  userName = '15.10.22',
+  guildName = 'דני ודנה',
+  setUsername,
+  setGuildname,
+  checked,
   checkedGuild,
   handleChangeGuild,
-  handleChange, 
-  fontFamily, 
+  handleChange,
+  fontFamily,
   fontColor,
   setFontColor,
   bgColor,
@@ -87,12 +87,12 @@ const CustomText = ({
   handleAlignment,
   setFontColorGuild,
   setFontFamilyGuild,
-  fontFamilyGuild, 
-  align
- }) => (
+  fontFamilyGuild,
+  align,
+}) => (
   <Container2>
     <Section1>
-      <Heading1>Name</Heading1>
+      <Heading1>תאריך</Heading1>
       <label htmlFor='material-switch'>
         <Toggle>
           <Switch
@@ -117,10 +117,10 @@ const CustomText = ({
           type='text'
           value={userName}
           name='username'
-          placeholder='Your Name'
+          placeholder='תאריך אירוע'
           onChange={(e) => setUsername(e.target.value)}
         />
-        <CustomButtons 
+        <CustomButtons
           fontColors={fontColor}
           setFontColors={setFontColor}
           bgColors={bgColor}
@@ -128,18 +128,17 @@ const CustomText = ({
           alignment={alignment}
           fontFamily={fontFamily}
           setFontFamily={setFontFamily}
-          fontlist="list-font-name"
+          fontlist='list-font-name'
           handleAlignment={handleAlignment}
           align={align}
-          FontId="custom-color-font-name"
-          bgId="custom-color-bg-name"
+          FontId='custom-color-font-name'
+          bgId='custom-color-bg-name'
         />
-        
       </Section2>
     )}
 
     <Section1 style={{ paddingTop: '25px' }}>
-      <Heading1>Guild</Heading1>
+      <Heading1>שמות</Heading1>
       <label htmlFor='material-switch'>
         <Toggle>
           <Switch
@@ -164,11 +163,11 @@ const CustomText = ({
           type='text'
           value={guildName}
           name='guildname'
-          placeholder='Your Guild'
+          placeholder='דני ודנה'
           onChange={(e) => setGuildname(e.target.value)}
         />
 
-        <CustomButtons 
+        <CustomButtons
           fontColors={fontColorGuild}
           setFontColors={setFontColorGuild}
           bgColors={bgColorGuild}
@@ -176,11 +175,11 @@ const CustomText = ({
           alignment={alignment}
           fontFamily={fontFamilyGuild}
           setFontFamily={setFontFamilyGuild}
-          fontlist="list-font-guild"
+          fontlist='list-font-guild'
           handleAlignment={handleAlignment}
           align={align}
-          FontId="custom-color-font-guild"
-          bgId="custom-color-bg-guild"
+          FontId='custom-color-font-guild'
+          bgId='custom-color-bg-guild'
         />
       </Section2>
     )}

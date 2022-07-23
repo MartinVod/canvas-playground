@@ -24,8 +24,8 @@ const CanvasStage = ({
   height,
 }) => {
   const groupDimensions = {
-    height: 272,
-    width: 273,
+    height: 572,
+    width: 573,
   };
   const groupHeight = groupDimensions.height;
   const aspectRatio = width / height;
