@@ -28,10 +28,12 @@ const Container3 = styled.h1`
 const C1 = styled.div`
   ${tw`
   mt-5
-  mlg:mt-0
+
   `}
 
+  height: 1050px;
   background-color: #ffffff;
+  box-shadow: 0 0 0 0 red;
   padding: 1rem;
   border-radius: 4px;
   width: 100%;
@@ -85,7 +87,7 @@ const Container = styled.div`
     text-center
     justify-items-center
     items-center
-    p-5
+
     overflow-y-hidden
     `}
 `;
@@ -131,6 +133,8 @@ let i = 0;
 const Frame = () => {
   const [selectedFrame, setSelectedFrame] = useState(FRAMES.ONE);
   const [uploadedImage, setUploadedImage] = useState();
+  const [uploadedImageMiddle, setUploadedImageMiddle] = useState();
+  const [uploadedImageBottom, setUploadedImageBottom] = useState();
   const [height, setHeight] = useState();
   const [width, setWidth] = useState();
   const [userName, setUserName] = useState('17.10.22');
@@ -142,6 +146,7 @@ const Frame = () => {
   const [fontColorGuild, setFontColorGuild] = useState(null);
   const [bgColor, setBgColor] = useState(null);
   const [bgColorGuild, setBgColorGuild] = useState(null);
+  const [stageBgColor, setStageBgColor] = useState('#ffffff');
   const [fontColor, setFontColor] = useState(null);
   const [alignment, setAlignment] = useState(align[0]);
 
@@ -160,7 +165,9 @@ const Frame = () => {
 
   const stageRef = useRef(null);
   const [frameImg] = useImage(selectedFrame, 'Anonymous');
-  const [image] = useImage(uploadedImage, 'Anonymous');
+  const [imageTop] = useImage(uploadedImage, 'Anonymous');
+  const [imageMiddle] = useImage(uploadedImageMiddle, 'AnonymousMiddle');
+  const [imageBottom] = useImage(uploadedImageBottom, 'AnonymousBottom');
 
   return (
     <>
@@ -171,30 +178,34 @@ const Frame = () => {
 
       <Container>
         <C2>
-          <C1>
+          <C1 style={{ backgroundColor: stageBgColor }}>
             {typeof window !== 'undefined' && (
-              <CanvasStage
-                stageRef={stageRef}
-                userName={userName}
-                guildName={guildName}
-                frameImg={frameImg}
-                image={image}
-                alignment={alignment}
-                fontColor={fontColor}
-                checked={checked}
-                checkedGuild={checkedGuild}
-                fontFamily={fontFamily}
-                bgColor={bgColor}
-                bgColorGuild={bgColorGuild}
-                fontColorGuild={fontColorGuild}
-                fontFamilyGuild={fontFamilyGuild}
-                height={height}
-                width={width}
-              />
+              <>
+                <CanvasStage
+                  stageRef={stageRef}
+                  userName={userName}
+                  guildName={guildName}
+                  frameImg={frameImg}
+                  imageTop={imageTop}
+                  imageMiddle={imageMiddle}
+                  imageBottom={imageBottom}
+                  alignment={alignment}
+                  fontColor={fontColor}
+                  checked={checked}
+                  checkedGuild={checkedGuild}
+                  fontFamily={fontFamily}
+                  bgColor={bgColor}
+                  bgColorGuild={bgColorGuild}
+                  fontColorGuild={fontColorGuild}
+                  fontFamilyGuild={fontFamilyGuild}
+                  height={height}
+                  width={width}
+                />
+              </>
             )}
-            <CarouselC>
+            {/* <CarouselC>
               <Carousel frames={FRAMES} setSelectedFrame={setSelectedFrame} />
-            </CarouselC>
+            </CarouselC> */}
           </C1>
 
           <C3>
@@ -207,7 +218,11 @@ const Frame = () => {
                 setchecked={setchecked}
                 setheckedGuild={setcheckedGuild}
                 uploadedImage={uploadedImage}
+                uploadedImageMiddle={uploadedImageMiddle}
+                uploadedImageBottom={uploadedImageBottom}
                 setUploadedImage={setUploadedImage}
+                setUploadedImageMiddle={setUploadedImageMiddle}
+                setUploadedImageBottom={setUploadedImageBottom}
                 userName={userName}
                 setUsername={setUserName}
                 guildName={guildName}
@@ -229,6 +244,7 @@ const Frame = () => {
                 setFontFamilyGuild={setFontFamilyGuild}
                 setHeight={setHeight}
                 setWidth={setWidth}
+                setStageBgColor={setStageBgColor}
               />
             </Container3>
             <Download stageRef={stageRef} />

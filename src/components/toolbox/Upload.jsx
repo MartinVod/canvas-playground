@@ -67,49 +67,70 @@ const Button = styled.button`
   `}
 `;
 
-const Upload = ({ setUploadedImage, setHeight, setWidth }) => (
-  <Container1>
-    <Heading1>העלה תמונה</Heading1>
-    <Section1>
-      <Description>
-        לחץ על האייקון לבחור תמונה - ניתן לחזור על הפעולה על מנת להעלות ּתמונה חדשה
-      </Description>
-      <div>
-        <ButtonContainer>
-          <Button>
-            <label htmlFor='contained-button-file'>
-              <FontAwesomeIcon icon={faUpload} style={{ color: '#000', fontSize: '23px' }} />
-            </label>
-          </Button>
-        </ButtonContainer>
+const Upload = ({ setUploadedImage, setHeight, setWidth, index }) => {
+  console.log('setUploadedImage', setUploadedImage);
 
-        <input
-          type='file'
-          accept='image/*'
-          style={{ display: 'none' }}
-          id='contained-button-file'
-          onChange={(e) => {
-            if (e.target.files.length > 0) {
-              setUploadedImage(URL.createObjectURL(e.target.files[0]));
-              const i = new Image();
-              i.onload = function () {
-                const imageDimensions = [
-                  {
-                    height: i.height,
-                    width: i.width,
-                  },
-                ];
-                setHeight(imageDimensions[0].height);
-                setWidth(imageDimensions[0].width);
-              };
+  let imageIndex = '';
+  switch (index) {
+    case 'top':
+      imageIndex = 'עליונה';
+      break;
+    case 'middle':
+      imageIndex = 'אמצעית';
+      break;
+    case 'bottom':
+      imageIndex = 'תחתונה';
+      break;
+    default:
+      imageIndex = '';
+  }
 
-              i.src = URL.createObjectURL(e.target.files[0]);
-            }
-          }}
-        />
-      </div>
-    </Section1>
-  </Container1>
-);
+  return (
+    <Container1>
+      <Heading1>{`העלה תמונה ${imageIndex}`}</Heading1>
+      <Section1>
+        <Description>
+          לחץ על האייקון לבחור תמונה - ניתן לחזור על הפעולה על מנת להעלות ּתמונה חדשה
+        </Description>
+        <div>
+          <ButtonContainer>
+            <Button>
+              <label htmlFor={`contained-button-file-${index}`}>
+                <FontAwesomeIcon icon={faUpload} style={{ color: '#000', fontSize: '23px' }} />
+              </label>
+            </Button>
+          </ButtonContainer>
+
+          <input
+            type='file'
+            accept='image/*'
+            style={{ display: 'none' }}
+            id={`contained-button-file-${index}`}
+            onChange={(e) => {
+              alert(index);
+              if (e.target.files.length > 0) {
+                console.log('e.target.files', e.target.files);
+                setUploadedImage(URL.createObjectURL(e.target.files[0]));
+                const i = new Image();
+                i.onload = function () {
+                  const imageDimensions = [
+                    {
+                      height: i.height,
+                      width: i.width,
+                    },
+                  ];
+                  setHeight(imageDimensions[0].height);
+                  setWidth(imageDimensions[0].width);
+                };
+
+                i.src = URL.createObjectURL(e.target.files[0]);
+              }
+            }}
+          />
+        </div>
+      </Section1>
+    </Container1>
+  );
+};
 
 export default Upload;

@@ -3,6 +3,7 @@ import React from 'react';
 // Components
 import Upload from '../toolbox/Upload';
 import CustomText from '../toolbox/InputText';
+import BackgroundController from '../toolbox/BackgroundController';
 
 const Inputs = ({
   checked,
@@ -12,7 +13,11 @@ const Inputs = ({
   handleChange,
   handleChangeGuild,
   uploadedImage,
+  uploadedImageMiddle,
+  uploadedImageBottom,
   setUploadedImage,
+  setUploadedImageMiddle,
+  setUploadedImageBottom,
   userName,
   setUsername,
   guildName,
@@ -34,6 +39,8 @@ const Inputs = ({
   align,
   setHeight,
   setWidth,
+  stageBgColor,
+  setStageBgColor,
 }) => (
   <div>
     <Upload
@@ -41,6 +48,21 @@ const Inputs = ({
       setUploadedImage={setUploadedImage}
       setHeight={setHeight}
       setWidth={setWidth}
+      index={'top'}
+    />
+    <Upload
+      uploadedImage={uploadedImageMiddle}
+      setUploadedImage={setUploadedImageMiddle}
+      setHeight={setHeight}
+      setWidth={setWidth}
+      index={'middle'}
+    />
+    <Upload
+      uploadedImage={uploadedImageBottom}
+      setUploadedImage={setUploadedImageBottom}
+      setHeight={setHeight}
+      setWidth={setWidth}
+      index={'bottom'}
     />
     <CustomText
       checked={checked}
@@ -69,6 +91,7 @@ const Inputs = ({
       handleAlignment={handleAlignment}
       align={align}
     />
+    <BackgroundController {...{ stageBgColor, setStageBgColor }} />
   </div>
 );
 
