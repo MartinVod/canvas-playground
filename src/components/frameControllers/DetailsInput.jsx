@@ -41,16 +41,23 @@ const Inputs = ({
   setWidth,
   stageBgColor,
   setStageBgColor,
-}) => (
-  <div>
-    <Upload
-      uploadedImage={uploadedImage}
-      setUploadedImage={setUploadedImage}
-      setHeight={setHeight}
-      setWidth={setWidth}
-      index={'top'}
-    />
-    <Upload
+  isBold,
+  isUnderline,
+  setIsBold,
+  setIsUnderline,
+}) => {
+  return (
+    <div>
+      <Upload
+        // uploadedImage={uploadedImage}
+        setUploadedImage={setUploadedImage}
+        setUploadedImageTwo={setUploadedImageMiddle}
+        setUploadedImageThree={setUploadedImageBottom}
+        setHeight={setHeight}
+        setWidth={setWidth}
+        // index={'top'}
+      />
+      {/* <Upload
       uploadedImage={uploadedImageMiddle}
       setUploadedImage={setUploadedImageMiddle}
       setHeight={setHeight}
@@ -63,36 +70,41 @@ const Inputs = ({
       setHeight={setHeight}
       setWidth={setWidth}
       index={'bottom'}
-    />
-    <CustomText
-      checked={checked}
-      checkedGuild={checkedGuild}
-      setchecked={setchecked}
-      setcheckedGuild={setcheckedGuild}
-      handleChange={handleChange}
-      handleChangeGuild={handleChangeGuild}
-      userName={userName}
-      setUsername={setUsername}
-      guildName={guildName}
-      setGuildname={setGuildname}
-      fontFamily={fontFamily}
-      setFontFamily={setFontFamily}
-      bgColor={bgColor}
-      setBgColor={setBgColor}
-      fontColor={fontColor}
-      setFontColor={setFontColor}
-      alignment={alignment}
-      bgColorGuild={bgColorGuild}
-      setBgColorGuild={setBgColorGuild}
-      fontColorGuild={fontColorGuild}
-      setFontColorGuild={setFontColorGuild}
-      fontFamilyGuild={fontFamilyGuild}
-      setFontFamilyGuild={setFontFamilyGuild}
-      handleAlignment={handleAlignment}
-      align={align}
-    />
-    <BackgroundController {...{ stageBgColor, setStageBgColor }} />
-  </div>
-);
+    /> */}
+      <CustomText
+        checked={checked}
+        checkedGuild={checkedGuild}
+        setchecked={setchecked}
+        setcheckedGuild={setcheckedGuild}
+        handleChange={handleChange}
+        handleChangeGuild={handleChangeGuild}
+        userName={userName}
+        setUsername={setUsername}
+        guildName={guildName}
+        setGuildname={setGuildname}
+        fontFamily={fontFamily}
+        setFontFamily={setFontFamily}
+        bgColor={bgColor}
+        setBgColor={setBgColor}
+        fontColor={fontColor}
+        setFontColor={setFontColor}
+        alignment={alignment}
+        bgColorGuild={bgColorGuild}
+        setBgColorGuild={setBgColorGuild}
+        fontColorGuild={fontColorGuild}
+        setFontColorGuild={setFontColorGuild}
+        fontFamilyGuild={fontFamilyGuild}
+        setFontFamilyGuild={setFontFamilyGuild}
+        handleAlignment={handleAlignment}
+        align={align}
+        isBold={isBold}
+        isUnderline={isUnderline}
+        setIsBold={setIsBold}
+        setIsUnderline={setIsUnderline}
+      />
+      <BackgroundController {...{ stageBgColor, setStageBgColor }} />
+    </div>
+  );
+};
 
 export default Inputs;

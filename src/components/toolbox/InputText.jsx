@@ -89,101 +89,122 @@ const CustomText = ({
   setFontFamilyGuild,
   fontFamilyGuild,
   align,
-}) => (
-  <Container2>
-    <Section1>
-      <Heading1>תאריך</Heading1>
-      <label htmlFor='material-switch'>
-        <Toggle>
-          <Switch
-            checked={checked}
-            onChange={handleChange}
-            onColor='#666666'
-            onHandleColor='#ffffff'
-            handleDiameter={20}
-            uncheckedIcon={false}
-            checkedIcon={false}
-            height={13}
-            width={30}
-            className='react-switch'
-            id='material-switch'
+  isBold,
+  isUnderline,
+  setIsBold,
+  setIsUnderline,
+}) => {
+  console.log(
+    'isBold,setIsBold,setIsUnderline,isUnderline',
+    isBold,
+    setIsBold,
+    setIsUnderline,
+    isUnderline,
+  );
+  return (
+    <Container2>
+      <Section1>
+        <Heading1>תאריך</Heading1>
+        <label htmlFor='material-switch'>
+          <Toggle>
+            <Switch
+              checked={checked}
+              onChange={handleChange}
+              onColor='#666666'
+              onHandleColor='#ffffff'
+              handleDiameter={20}
+              uncheckedIcon={false}
+              checkedIcon={false}
+              height={13}
+              width={30}
+              className='react-switch'
+              id='material-switch'
+            />
+          </Toggle>
+        </label>
+      </Section1>
+      {checked && (
+        <Section2>
+          <FormFillup
+            type='text'
+            value={userName}
+            name='username'
+            placeholder='תאריך אירוע'
+            onChange={(e) => setUsername(e.target.value)}
           />
-        </Toggle>
-      </label>
-    </Section1>
-    {checked && (
-      <Section2>
-        <FormFillup
-          type='text'
-          value={userName}
-          name='username'
-          placeholder='תאריך אירוע'
-          onChange={(e) => setUsername(e.target.value)}
-        />
-        <CustomButtons
-          fontColors={fontColor}
-          setFontColors={setFontColor}
-          bgColors={bgColor}
-          setBgColors={setBgColor}
-          alignment={alignment}
-          fontFamily={fontFamily}
-          setFontFamily={setFontFamily}
-          fontlist='list-font-name'
-          handleAlignment={handleAlignment}
-          align={align}
-          FontId='custom-color-font-name'
-          bgId='custom-color-bg-name'
-        />
-      </Section2>
-    )}
-
-    <Section1 style={{ paddingTop: '25px' }}>
-      <Heading1>שמות</Heading1>
-      <label htmlFor='material-switch'>
-        <Toggle>
-          <Switch
-            checked={checkedGuild}
-            onChange={handleChangeGuild}
-            onColor='#666666'
-            onHandleColor='#ffffff'
-            handleDiameter={20}
-            uncheckedIcon={false}
-            checkedIcon={false}
-            height={13}
-            width={30}
-            className='react-switch'
-            id='material-switch'
+          <CustomButtons
+            fontColors={fontColor}
+            setFontColors={setFontColor}
+            bgColors={bgColor}
+            setBgColors={setBgColor}
+            alignment={alignment}
+            fontFamily={fontFamily}
+            setFontFamily={setFontFamily}
+            fontlist='list-font-name'
+            handleAlignment={handleAlignment}
+            align={align}
+            FontId='custom-color-font-name'
+            bgId='custom-color-bg-name'
+            isBold={isBold}
+            setIsBold={setIsBold}
+            isUnderline={isUnderline}
+            setIsUnderline={setIsUnderline}
           />
-        </Toggle>
-      </label>
-    </Section1>
-    {checkedGuild && (
-      <Section2 style={{ paddingBottom: '20px' }}>
-        <FormFillup
-          type='text'
-          value={guildName}
-          name='guildname'
-          placeholder='דני ודנה'
-          onChange={(e) => setGuildname(e.target.value)}
-        />
+        </Section2>
+      )}
 
-        <CustomButtons
-          fontColors={fontColorGuild}
-          setFontColors={setFontColorGuild}
-          bgColors={bgColorGuild}
-          setBgColors={setBgColorGuild}
-          alignment={alignment}
-          fontFamily={fontFamilyGuild}
-          setFontFamily={setFontFamilyGuild}
-          fontlist='list-font-guild'
-          handleAlignment={handleAlignment}
-          align={align}
-          FontId='custom-color-font-guild'
-          bgId='custom-color-bg-guild'
-        />
-      </Section2>
-    )}
-  </Container2>
-);
+      <Section1 style={{ paddingTop: '25px' }}>
+        <Heading1>שמות</Heading1>
+        <label htmlFor='material-switch'>
+          <Toggle>
+            <Switch
+              checked={checkedGuild}
+              onChange={handleChangeGuild}
+              onColor='#666666'
+              onHandleColor='#ffffff'
+              handleDiameter={20}
+              uncheckedIcon={false}
+              checkedIcon={false}
+              height={13}
+              width={30}
+              className='react-switch'
+              id='material-switch'
+            />
+          </Toggle>
+        </label>
+      </Section1>
+      {checkedGuild && (
+        <Section2 style={{ paddingBottom: '20px' }}>
+          <FormFillup
+            type='text'
+            value={guildName}
+            name='guildname'
+            placeholder='דני ודנה'
+            onChange={(e) => setGuildname(e.target.value)}
+          />
+
+          <CustomButtons
+            fontColors={fontColorGuild}
+            setFontColors={setFontColorGuild}
+            bgColors={bgColorGuild}
+            setBgColors={setBgColorGuild}
+            alignment={alignment}
+            fontFamily={fontFamilyGuild}
+            setFontFamily={setFontFamilyGuild}
+            fontlist='list-font-guild'
+            handleAlignment={handleAlignment}
+            align={align}
+            FontId='custom-color-font-guild'
+            bgId='custom-color-bg-guild'
+            isBold={isBold}
+            isUnderline={isUnderline}
+            setIsBold={setIsBold}
+            setIsUnderline={setIsUnderline}
+          />
+        </Section2>
+      )}
+    </Container2>
+  );
+};
 
 export default CustomText;

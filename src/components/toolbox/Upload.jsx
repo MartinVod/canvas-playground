@@ -20,6 +20,7 @@ const Section1 = styled.div`
     flex
     gap-4
   `}
+  position: relative;
 `;
 
 const Heading1 = styled.h1`
@@ -67,8 +68,15 @@ const Button = styled.button`
   `}
 `;
 
-const Upload = ({ setUploadedImage, setHeight, setWidth, index }) => {
-  console.log('setUploadedImage', setUploadedImage);
+const Upload = ({
+  setUploadedImage,
+  setUploadedImageTwo,
+  setUploadedImageThree,
+  setHeight,
+  setWidth,
+  index,
+}) => {
+  // console.log('setUploadedImage', setUploadedImage);
 
   let imageIndex = '';
   switch (index) {
@@ -87,11 +95,9 @@ const Upload = ({ setUploadedImage, setHeight, setWidth, index }) => {
 
   return (
     <Container1>
-      <Heading1>{`העלה תמונה ${imageIndex}`}</Heading1>
+      <Heading1>{`העלאת תמונות ${imageIndex}`}</Heading1>
       <Section1>
-        <Description>
-          לחץ על האייקון לבחור תמונה - ניתן לחזור על הפעולה על מנת להעלות ּתמונה חדשה
-        </Description>
+        <Description>לחץ על האייקון לבחור תמונה - יש לבחור 3 תמונות</Description>
         <div>
           <ButtonContainer>
             <Button>
@@ -102,28 +108,65 @@ const Upload = ({ setUploadedImage, setHeight, setWidth, index }) => {
           </ButtonContainer>
 
           <input
+            multiple
             type='file'
             accept='image/*'
-            style={{ display: 'none' }}
+            style={{
+              opacity: 0,
+              height: 80,
+              width: 80,
+              cursor: 'pointer',
+              position: 'absolute',
+              top: -20,
+              right: 0,
+            }}
             id={`contained-button-file-${index}`}
             onChange={(e) => {
-              alert(index);
-              if (e.target.files.length > 0) {
+              if (e.target.files.length === 3) {
                 console.log('e.target.files', e.target.files);
                 setUploadedImage(URL.createObjectURL(e.target.files[0]));
+                setUploadedImageTwo(URL.createObjectURL(e.target.files[1]));
+                setUploadedImageThree(URL.createObjectURL(e.target.files[2]));
                 const i = new Image();
+                const i2 = new Image();
+                const i3 = new Image();
                 i.onload = function () {
-                  const imageDimensions = [
-                    {
-                      height: i.height,
-                      width: i.width,
-                    },
-                  ];
-                  setHeight(imageDimensions[0].height);
-                  setWidth(imageDimensions[0].width);
+                  console.log('i.height', i.height);
+                  // const imageDimensions = [
+                  //   {
+                  //     height: i.height,
+                  //     width: i.width,
+                  //   },
+                  // ];
+                  setHeight(60);
+                  setWidth(60);
                 };
+                // i2.onload = function () {
+                //   // const imageDimensions = [
+                //   //   {
+                //   //     height: i.height,
+                //   //     width: i.width,
+                //   //   },
+                //   // ];
+                //   setHeight('120px');
+                //   setWidth('120px');
+                // };
+                // i3.onload = function () {
+                //   // const imageDimensions = [
+                //   //   {
+                //   //     height: i.height,
+                //   //     width: i.width,
+                //   //   },
+                //   // ];
+                //   setHeight('120px');
+                //   setWidth('120px');
+                // };
 
                 i.src = URL.createObjectURL(e.target.files[0]);
+                i2.src = URL.createObjectURL(e.target.files[1]);
+                i3.src = URL.createObjectURL(e.target.files[2]);
+              } else {
+                alert('יש לבחור 3 תמונות');
               }
             }}
           />
