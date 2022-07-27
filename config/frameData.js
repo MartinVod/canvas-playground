@@ -361,7 +361,7 @@ import a353 from '../images/icons/1_(353).png';
 import a354 from '../images/icons/1_(354).png';
 import a355 from '../images/icons/1_(355).png';
 import a356 from '../images/icons/1_(356).png';
-import a357 from '../images/icons/1_(357).png';
+// import a357 from '../images/icons/1_(357).png';
 import a358 from '../images/icons/1_(358).png';
 import a359 from '../images/icons/1_(359).png';
 import a360 from '../images/icons/1_(360).png';
@@ -890,7 +890,7 @@ export const iconData = {
     a354,
     a355,
     a356,
-    a357,
+    // a357,
     a358,
     a359,
     a360,
