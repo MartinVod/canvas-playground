@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Konva from 'konva';
 
 // Components
-import { Image, Transformer, Circle } from 'react-konva';
+import { Image, Transformer, Circle, Star } from 'react-konva';
 
 const TransformableImage = ({
   shapeProps,
@@ -92,9 +92,59 @@ const TransformableImage = ({
   ) : shape === 'circle' ? (
     <>
       <Circle
-        x={initPosX + 150}
-        y={initPosY + 160}
+        x={initPosX + 120}
+        y={initPosY + 100}
         radius={50}
+        fillPatternImage={image}
+        width={237 / 1.05}
+        height={237 / 1.05}
+        strokeWidth={1} // border width
+        stroke='black' // border color
+        onClick={onSelect}
+        onTap={onSelect}
+        onMouseDown={onMouseDown}
+        onTouchStart={onTouchStart}
+        ref={shapeRef}
+        {...shapeProps}
+        draggable
+        onDragEnd={(e) => {
+          onChange({
+            ...shapeProps,
+            x: e.target.x(),
+            y: e.target.y(),
+          });
+        }}
+        onTransformEnd={() => {
+          if (shapeRef.current) {
+            const node = shapeRef.current;
+            onChange({
+              ...shapeProps,
+              x: node.x(),
+              y: node.y(),
+            });
+          }
+        }}
+      />
+      {isSelected && (
+        <Transformer
+          ref={trRef}
+          boundBoxFunc={(oldBox, newBox) => {
+            if (newBox.width < 5 || newBox.height < 5) {
+              return oldBox;
+            }
+            return newBox;
+          }}
+        />
+      )}
+    </>
+  ) : shape === 'star' ? (
+    <>
+      <Star
+        x={initPosX + 120}
+        y={initPosY + 100}
+        numPoints={5}
+        innerRadius={70}
+        outerRadius={125}
         fillPatternImage={image}
         width={237 / 1.05}
         height={237 / 1.05}

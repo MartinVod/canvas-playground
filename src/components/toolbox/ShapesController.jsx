@@ -88,6 +88,12 @@ const ShapesController = () => {
         >
           עיגול
         </button>
+        <button
+          onClick={() => handleChooseShape('star')}
+          style={{ opacity: imageShape === 'star' ? 1 : 0.5 }}
+        >
+          כוכב
+        </button>
       </Section2>
     </Container2>
   );
