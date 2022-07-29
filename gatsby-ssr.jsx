@@ -12,10 +12,10 @@ module.exports.wrapRootElement = function ({ element, props }) {
 };
 
 // Wraps every page in a component
-module.exports.wrapPageElement = function ({ element, props }) {
-  return <RecoilRoot>{element}</RecoilRoot>;
+// module.exports.wrapPageElement = function ({ element, props }) {
+//   return <RecoilRoot>{element}</RecoilRoot>;
 
-};
+// };
 
 // exports.wrapPageElement = ({ element, props }) => {
 //   return <RecoilRoot {...props}>{element}</RecoilRoot>;
