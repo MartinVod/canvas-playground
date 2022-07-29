@@ -14,6 +14,9 @@ exports.onClientEntry = () => {
   require('babel-polyfill');
 };
 
-module.exports.wrapRootElement = ({ element }) => document.createElement(RecoilRoot, null, element);
-module.exports.wrapRootElement = ({ element, props }) =>
-  document.createElement(RecoilRoot, null, element);
+module.exports.wrapRootElement = function ({ element }) {
+  return document.createElement(RecoilRoot, null, element);
+};
+module.exports.wrapRootElement = function ({ element, props }) {
+  return document.createElement(RecoilRoot, null, element);
+};
