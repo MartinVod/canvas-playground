@@ -7,13 +7,13 @@ exports.onRenderBody = ({ setBodyAttributes }, pluginOptions) => {
     className: 'my-body-class',
   });
 };
+module.exports.wrapRootElement = function ({ element, props }) {
+  return document.createElement(RecoilRoot, props, element);
+};
 
 // Wraps every page in a component
 module.exports.wrapPageElement = function ({ element, props }) {
-  return document.createElement(RecoilRoot, null, element);
-};
-module.exports.wrapRootElement = function ({ element, props }) {
-  return document.createElement(RecoilRoot, null, element);
+  return document.createElement(RecoilRoot, props, element);
 };
 
 // exports.wrapPageElement = ({ element, props }) => {

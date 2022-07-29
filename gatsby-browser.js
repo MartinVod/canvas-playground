@@ -4,7 +4,6 @@
  * See: https://www.gatsbyjs.com/docs/browser-apis/
  */
 
-const React = require('react');
 const { RecoilRoot } = require('recoil');
 
 require('./src/styles/global.css');
