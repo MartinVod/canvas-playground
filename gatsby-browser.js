@@ -4,16 +4,16 @@
  * See: https://www.gatsbyjs.com/docs/browser-apis/
  */
 
-import { RecoilRoot } from 'recoil';
-import React from 'react';
+const React = require('react');
+const { RecoilRoot } = require('recoil');
 
 require('./src/styles/global.css');
 
-export const onClientEntry = () => {
+exports.onClientEntry = () => {
   // eslint-disable-next-line global-require
   require('babel-polyfill');
 };
 
-export const wrapPageElement = ({ element, props }) => (
-  <RecoilRoot {...props}>{element}</RecoilRoot>
-);
+exports.wrapPageElement = ({ element, props }) => {
+  return <RecoilRoot {...props}>{element}</RecoilRoot>;
+};
