@@ -75,9 +75,8 @@ const Upload = ({
   setHeight,
   setWidth,
   index,
+  setNoImage,
 }) => {
-  // console.log('setUploadedImage', setUploadedImage);
-
   let imageIndex = '';
   switch (index) {
     case 'top':
@@ -123,7 +122,6 @@ const Upload = ({
             id={`contained-button-file-${index}`}
             onChange={(e) => {
               if (e.target.files.length === 3) {
-                console.log('e.target.files', e.target.files);
                 setUploadedImage(URL.createObjectURL(e.target.files[0]));
                 setUploadedImageTwo(URL.createObjectURL(e.target.files[1]));
                 setUploadedImageThree(URL.createObjectURL(e.target.files[2]));
@@ -131,7 +129,6 @@ const Upload = ({
                 const i2 = new Image();
                 const i3 = new Image();
                 i.onload = function () {
-                  console.log('i.height', i.height);
                   // const imageDimensions = [
                   //   {
                   //     height: i.height,
@@ -140,6 +137,7 @@ const Upload = ({
                   // ];
                   setHeight(60);
                   setWidth(60);
+                  setNoImage(false);
                 };
                 // i2.onload = function () {
                 //   // const imageDimensions = [

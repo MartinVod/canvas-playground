@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Konva from 'konva';
 
 // Components
 import { Image, Transformer } from 'react-konva';
+
 
 const TransformableImage = ({
   shapeProps,
@@ -14,21 +15,25 @@ const TransformableImage = ({
   image,
   onMouseDown,
   onTouchStart,
+  initPosX,
+  initPosY,
+  noImage,
 }) => {
   const shapeRef = React.useRef();
   const trRef = React.useRef();
+  // const [noImage, setNoImage] = useRecoilState(cleanImages);
 
   React.useEffect(() => {
-    console.log('Konva', Konva.Image);
     if (isSelected) {
       trRef.current.nodes([shapeRef.current]);
       trRef.current.getLayer().batchDraw();
       // trRef?.current?.attr = {...};
     }
     if (image) {
-      console.log('shapeRef', shapeRef);
       // shapeRef?.current?.attr = {...shapeRef?.current?.attr , border:"5"};
       // you many need to reapply cache on some props changes like shadow, stroke, etc.
+      shapeRef?.current?.cache();
+    } else {
       shapeRef?.current?.cache();
     }
   }, [isSelected, image]);
@@ -36,11 +41,13 @@ const TransformableImage = ({
   return (
     <>
       <Image
+        shadowBlur={5}
+        opacity={noImage ? 0 : 1}
         width={237}
         height={237}
         image={image}
-        x={50}
-        y={240}
+        x={initPosX}
+        y={initPosY}
         strokeWidth={1} // border width
         stroke='black' // border color
         onClick={onSelect}

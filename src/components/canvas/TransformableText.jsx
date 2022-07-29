@@ -17,6 +17,8 @@ const TransformableText = ({
   isBold,
   isUnderline,
   fontSize,
+  initPosX,
+  initPosY,
 }) => {
   const shapeRef = useRef();
   const trRef = useRef();
@@ -29,11 +31,10 @@ const TransformableText = ({
   }, [isSelected]);
 
   React.useEffect(() => {
-    console.log('shapeRef', shapeRef);
     // shapeRef?.current?.attr = {...shapeRef?.current?.attr , border:"5"};
     // you many need to reapply cache on some props changes like shadow, stroke, etc.
     shapeRef?.current?.cache();
-  }, [fontFamily, isBold, isUnderline]);
+  }, [fontFamily, isBold, isUnderline, fontColor, name]);
 
   return (
     <>
@@ -62,6 +63,8 @@ const TransformableText = ({
             });
           }
         }}
+        x={initPosX}
+        y={initPosY}
       >
         <Rect width={200} height={40} fill={colour || 'lightblue'} cornerRadius={[7, 7, 7, 7]} />
         <Text
@@ -69,13 +72,14 @@ const TransformableText = ({
           height={40}
           align={alignment || 'center'}
           verticalAlign='middle'
-          text={name}
+          text={name ?? ""}
           fill={fontColor || 'black'}
           fontSize={fontSize}
           fontFamily={fontFamily || 'Roboto'}
           fontStyle={fontStyle}
           fontWeight={isBold ? 'bold' : 'normal'}
           textDecoration={isUnderline ? 'underline' : 'none'}
+          onChange={(e) => console.log(e)}
         />
       </Group>
       {isSelected && (

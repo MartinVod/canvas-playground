@@ -1,24 +1,30 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import { useRecoilState } from 'recoil';
+import { stageBgImageRef, selectedIconRef } from '../recoil/themes';
+
 const CarouselContainer = styled.div`
-background-color: #FFFFFF;
+  background-color: transparent;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 `;
 
 const Carousel = ({ frames, setSelectedFrame }) => {
+  const [stageBgImage, setStageBgImage] = useRecoilState(stageBgImageRef);
+
   const handleSelectIcon = (e) => {
-    console.log('e', e);
-    let newImg = document.createElement('img');
-    newImg.crossOrigin = 'AnonymousIcon';
-    newImg.height = 90;
-    newImg.width = 90;
-    newImg.src = e;
+    // let newImg = document.createElement('img');
+    // newImg.crossOrigin = 'AnonymousIcon';
+    // newImg.src = e;
+    let chosenFrame = new Image();
+    chosenFrame.height = 900;
+    chosenFrame.width = 300;
+    chosenFrame.src = e;
+    setStageBgImage(e);
 
-    console.log('newImg', newImg);
-    console.log('newImg', newImg);
-    console.log('newImg', newImg);
-
-    setSelectedFrame(newImg);
+    setSelectedFrame(chosenFrame);
   };
 
   return (
@@ -34,7 +40,7 @@ const Carousel = ({ frames, setSelectedFrame }) => {
           <img
             src={frames[key]}
             alt='some alt text'
-            style={{ width: '50px', height: '50px', margin: '10px' }}
+            style={{ width: '45px', height: '45px', margin: '5px' }}
           />
         </span>
       ))}

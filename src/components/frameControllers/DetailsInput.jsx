@@ -1,9 +1,13 @@
 import React from 'react';
+import { useRecoilState } from 'recoil';
+
+import { cleanImages } from '../recoil/themes';
 
 // Components
 import Upload from '../toolbox/Upload';
 import CustomText from '../toolbox/InputText';
 import BackgroundController from '../toolbox/BackgroundController';
+import ThemesController from '../toolbox/ThemesController';
 
 const Inputs = ({
   checked,
@@ -41,11 +45,20 @@ const Inputs = ({
   setWidth,
   stageBgColor,
   setStageBgColor,
-  isBold,
-  isUnderline,
-  setIsBold,
-  setIsUnderline,
+  // celebratorIsBold,
+  // isUnderline,
+  // setIsBold,
+  // setIsUnderline,
+  // isBold,
+  // isUnderline,
+  // setIsBold,
+  // setIsUnderline,
+  colorOrImage,
+  setColorOrImage,
+  setSelectedFrame,
 }) => {
+  const [noImage, setNoImage] = useRecoilState(cleanImages);
+
   return (
     <div>
       <Upload
@@ -55,22 +68,10 @@ const Inputs = ({
         setUploadedImageThree={setUploadedImageBottom}
         setHeight={setHeight}
         setWidth={setWidth}
+        setNoImage={setNoImage}
         // index={'top'}
       />
-      {/* <Upload
-      uploadedImage={uploadedImageMiddle}
-      setUploadedImage={setUploadedImageMiddle}
-      setHeight={setHeight}
-      setWidth={setWidth}
-      index={'middle'}
-    />
-    <Upload
-      uploadedImage={uploadedImageBottom}
-      setUploadedImage={setUploadedImageBottom}
-      setHeight={setHeight}
-      setWidth={setWidth}
-      index={'bottom'}
-    /> */}
+
       <CustomText
         checked={checked}
         checkedGuild={checkedGuild}
@@ -97,12 +98,15 @@ const Inputs = ({
         setFontFamilyGuild={setFontFamilyGuild}
         handleAlignment={handleAlignment}
         align={align}
-        isBold={isBold}
-        isUnderline={isUnderline}
-        setIsBold={setIsBold}
-        setIsUnderline={setIsUnderline}
+        // isBold={isBold}
+        // isUnderline={isUnderline}
+        // setIsBold={setIsBold}
+        // setIsUnderline={setIsUnderline}
       />
-      <BackgroundController {...{ stageBgColor, setStageBgColor }} />
+      <BackgroundController
+        {...{ stageBgColor, setStageBgColor, colorOrImage, setColorOrImage, setSelectedFrame }}
+      />
+      <ThemesController />
     </div>
   );
 };

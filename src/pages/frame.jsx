@@ -5,19 +5,40 @@ import useImage from 'use-image';
 import styled from 'styled-components';
 import tw from 'twin.macro';
 import Helmet from 'react-helmet';
+import { useRecoilState } from 'recoil';
+
 import Logo from '../../images/logo.png';
 
-
 // Components
-import Carousel from '../components/frameControllers/FrameCarousel';
+import IconsCarousel from '../components/frameControllers/IconsCarousel';
 // import Head from '../components/shared/Head';
 import Inputs from '../components/frameControllers/DetailsInput';
 import Download from '../components/toolbox/Download';
 import CanvasStage from '../components/canvas/Stage';
 
 // Assets
-import frameData from '../../config/frameData';
 import { iconData } from '../../config/frameData';
+
+// Recoil
+
+import {
+  selectedIcon,
+  iconPositionX,
+  iconPositionY,
+  colorOrImage as bgType,
+  stageBgColor as frameBgColor,
+  stageBgImage as frameBgImage,
+  celebratorsNames,
+  date,
+  celebratorsNamesColor,
+  celebratorsNamesFont,
+  celebratorsNamesIsBold,
+  celebratorsNamesIsUnderline,
+  dateColor,
+  dateFont,
+  dateIsBold,
+  dateIsUnderline,
+} from '../components/recoil/themes';
 
 const Container3 = styled.h1`
   ${tw`
@@ -35,20 +56,12 @@ const C1 = styled.div`
   `}
 
   height: 1000px;
-  width: 310px;
-  background-color: #ffffff;
+  width: 300px;
+  background-color: #000000;
   box-shadow: 0 0 0 0 red;
 
   border-radius: 4px;
 `;
-
-// const C4 = styled.div`
-//   ${tw`
-//   pt-8
-//   pl-5
-//   mlg:flex justify-center m-0
-//   `}
-// `;
 
 const C3 = styled.div`
   ${tw`
@@ -69,15 +82,14 @@ const C2 = styled.div`
 
 const CarouselC = styled.h1`
   ${tw`
-    w-100
     sm:w-full
-
     mt-5
 `}
   margin: 0px, 0px;
   padding: 2px;
   overflow-x: auto;
   white-space: nowrap;
+  width: 100%;
 `;
 
 const Container = styled.div`
@@ -94,42 +106,6 @@ const Container = styled.div`
 
     `}
 `;
-
-// const Heading = styled.div`
-//   ${tw`
-//     font-roboto
-//     text-6xl
-//     flex
-//     justify-center
-//     items-center
-//     gap-4
-//     -mt-10
-//     mlg:hidden
-//     `}
-// `;
-
-// const Yellow = styled.span`
-//   ${tw`
-//     text-frame-yellow
-//     `}
-// `;
-
-// const SlimText = styled.span`
-//   ${tw`
-//     font-light
-//     text-white
-//     `}
-// `;
-
-const FRAMES = {
-  // ONE: frameData.frames.ONE,
-  // TWO: frameData.frames.TWO,
-  // THREE: frameData.frames.THREE,
-  FOUR: frameData.frames.FOUR,
-  FIVE: frameData.frames.FIVE,
-  SIX: frameData.frames.SIX,
-};
-
 const ICONS = {
   a1: iconData.icons.a1,
   a2: iconData.icons.a2,
@@ -651,27 +627,49 @@ const align = ['center', 'left', 'right'];
 let i = 0;
 
 const Frame = () => {
-  const [selectedFrame, setSelectedFrame] = useState(FRAMES.ONE);
-  const [SelectedIcon, setSelectedIcon] = useState();
   const [uploadedImageTop, setUploadedImageTop] = useState();
   const [uploadedImageMiddle, setUploadedImageMiddle] = useState();
   const [uploadedImageBottom, setUploadedImageBottom] = useState();
+
   const [height, setHeight] = useState();
   const [width, setWidth] = useState();
-  const [userName, setUserName] = useState('17.10.22');
-  const [guildName, setGuildName] = useState('דני ודנה');
+
   const [checked, setchecked] = useState(false);
   const [checkedGuild, setcheckedGuild] = useState(false);
-  const [fontFamily, setFontFamily] = useState(null);
-  const [fontFamilyGuild, setFontFamilyGuild] = useState(null);
-  const [fontColorGuild, setFontColorGuild] = useState(null);
+
   const [bgColor, setBgColor] = useState('transparent');
   const [bgColorGuild, setBgColorGuild] = useState('transparent');
-  const [stageBgColor, setStageBgColor] = useState('#ffffff');
-  const [fontColor, setFontColor] = useState(null);
+
   const [alignment, setAlignment] = useState(align[0]);
-  const [isBold, setIsBold] = useState(false);
-  const [isUnderline, setIsUnderline] = useState(false);
+
+  // const [userName, setUserName] = useState('17.10.22');
+  // const [guildName, setGuildName] = useState('דני ודנה');
+  // const [selectedFrame, setSelectedFrame] = useState(FRAMES.ONE);
+  // const [SelectedIcon, setSelectedIcon] = useState();
+  // const [SelectedFrame, setSelectedFrame] = useState();
+  // const [stageBgColor, setStageBgColor] = useState('#ffffff');
+  // const [colorOrImage, setColorOrImage] = useState(false); // false = color , true = image
+
+  // recoils
+  const [SelectedIcon, setSelectedIcon] = useRecoilState(selectedIcon);
+  const [SelectedFrame, setSelectedFrame] = useRecoilState(frameBgImage);
+  const [stageBgColor, setStageBgColor] = useRecoilState(frameBgColor);
+  const [colorOrImage, setColorOrImage] = useRecoilState(bgType);
+  const [celebratorsText, setCelebratorsText] = useRecoilState(celebratorsNames);
+  const [dateText, setDateText] = useRecoilState(date);
+  const [celebratorsNamesFontColor, setCelebratorsNamesFontColor] =
+    useRecoilState(celebratorsNamesColor);
+
+  const [celebratorsNamesFontFamily, setCelebratorsNamesFontFamily] =
+    useRecoilState(celebratorsNamesFont);
+
+  const [celebratorsNamesFontIsBold] = useRecoilState(celebratorsNamesIsBold);
+
+  const [celebratorsNamesFontIsUnderline] = useRecoilState(celebratorsNamesIsUnderline);
+  const [dateFontIsBold] = useRecoilState(dateIsBold);
+  const [dateFontIsUnderline] = useRecoilState(dateIsUnderline);
+  const [dateFontColor, setDateFontColor] = useRecoilState(dateColor);
+  const [dateFontFamily, setDateFontFamily] = useRecoilState(dateFont);
 
   const handleAlignment = () => {
     setAlignment(align[i + 1]);
@@ -701,43 +699,49 @@ const Frame = () => {
 
       <Container>
         <C2>
-          <C1 style={{ backgroundColor: stageBgColor }}>
+          <C1>
             {typeof window !== 'undefined' && (
               <>
                 <CanvasStage
                   stageRef={stageRef}
-                  userName={userName}
-                  guildName={guildName}
+                  userName={celebratorsText}
+                  guildName={dateText}
                   // frameImg={frameImg}
                   imageTop={imageTop}
                   imageMiddle={imageMiddle}
                   imageBottom={imageBottom}
                   SelectedIcon={SelectedIcon}
                   alignment={alignment}
-                  fontColor={fontColor}
+                  fontColor={celebratorsNamesFontColor}
                   checked={checked}
                   checkedGuild={checkedGuild}
-                  fontFamily={fontFamily}
+                  fontFamily={celebratorsNamesFontFamily}
                   bgColor={bgColor}
                   bgColorGuild={bgColorGuild}
-                  fontColorGuild={fontColorGuild}
-                  fontFamilyGuild={fontFamilyGuild}
+                  fontColorGuild={dateFontColor}
+                  fontFamilyGuild={dateFontFamily}
                   height={height}
                   width={width}
-                  isBold={isBold}
-                  isUnderline={isUnderline}
+                  dateTextIsBold={dateFontIsBold}
+                  dateTextIsUnderline={dateFontIsUnderline}
+                  celebratorTextIsBold={celebratorsNamesFontIsBold}
+                  celebratorTextIsUnderline={celebratorsNamesFontIsUnderline}
+                  stageBgColor={stageBgColor}
+                  selectedFrame={SelectedFrame}
+                  colorOrImage={colorOrImage}
                 />
               </>
             )}
             <CarouselC>
-              <Carousel frames={ICONS} setSelectedFrame={setSelectedIcon} />
+              <IconsCarousel frames={ICONS} setSelectedFrame={setSelectedIcon} />
             </CarouselC>
           </C1>
 
           <C3>
             <Container3>
-              <img src={Logo} style={{height: 180 , width:180}} />
+              <img src={Logo} style={{ height: 180, width: 180 }} />
               <Inputs
+                setSelectedFrame={setSelectedFrame}
                 handleChange={handleChange}
                 handleChangeGuild={handleChangeGuild}
                 checked={checked}
@@ -750,35 +754,46 @@ const Frame = () => {
                 setUploadedImage={setUploadedImageTop}
                 setUploadedImageMiddle={setUploadedImageMiddle}
                 setUploadedImageBottom={setUploadedImageBottom}
-                userName={userName}
-                setUsername={setUserName}
-                guildName={guildName}
-                setGuildname={setGuildName}
-                fontFamily={fontFamily}
-                setFontFamily={setFontFamily}
+                userName={dateText}
+                setUsername={setDateText}
+                guildName={celebratorsText}
+                setGuildname={setCelebratorsText}
+                fontFamily={celebratorsNamesFontFamily}
+                setFontFamily={setCelebratorsNamesFontFamily}
                 bgColor={bgColor}
                 setBgColor={setBgColor}
-                fontColor={fontColor}
-                setFontColor={setFontColor}
+                fontColor={celebratorsNamesFontColor}
+                setFontColor={setCelebratorsNamesFontColor}
                 alignment={alignment}
                 bgColorGuild={bgColorGuild}
                 setBgColorGuild={setBgColorGuild}
-                fontColorGuild={fontColorGuild}
-                setFontColorGuild={setFontColorGuild}
+                fontColorGuild={dateFontColor}
+                setFontColorGuild={setDateFontColor}
                 handleAlignment={handleAlignment}
                 align={align}
-                fontFamilyGuild={fontFamilyGuild}
-                setFontFamilyGuild={setFontFamilyGuild}
+                fontFamilyGuild={dateFontFamily}
+                setFontFamilyGuild={setDateFontFamily}
                 setHeight={setHeight}
                 setWidth={setWidth}
                 setStageBgColor={setStageBgColor}
-                isBold={isBold}
-                isUnderline={isUnderline}
-                setIsBold={setIsBold}
-                setIsUnderline={setIsUnderline}
+                // dateTextIsBold={dateFontIsBold}
+                // dateTextIsUnderline={dateFontIsUnderline}
+                // celebratorTextIsBold={celebratorsNamesFontIsBold}
+                // celebratorTextIsUnderline={celebratorsNamesFontIsUnderline}
+                // setDateTextIsBold={setDateFontIsBold}
+                // setDateTextIsUnderline={setDateFontIsUnderline}
+                // setCelebratorTextIsBold={setCelebratorsNamesFontIsBold}
+                // setCelebratorTextIsUnderline={setCelebratorsNamesFontIsUnderline}
+                colorOrImage={colorOrImage}
+                setColorOrImage={setColorOrImage}
               />
             </Container3>
-            <Download stageRef={stageRef} />
+            <Download
+              stageRef={stageRef}
+              setUploadedImage={setUploadedImageTop}
+              setUploadedImageMiddle={setUploadedImageMiddle}
+              setUploadedImageBottom={setUploadedImageBottom}
+            />
           </C3>
         </C2>
       </Container>

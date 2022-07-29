@@ -13,6 +13,10 @@ const TransformableIcon = ({
   image,
   onMouseDown,
   onTouchStart,
+  initPosX,
+  initPosY,
+  setInitPosX,
+  setInitPosY,
 }) => {
   const shapeRef = React.useRef();
   const trRef = React.useRef();
@@ -29,8 +33,8 @@ const TransformableIcon = ({
       <Image
         image={image}
         width={90}
-        x={120 * 1}
-        y={240 * 2}
+        x={initPosX}
+        y={initPosY}
         height={90}
         onClick={onSelect}
         onTap={onSelect}

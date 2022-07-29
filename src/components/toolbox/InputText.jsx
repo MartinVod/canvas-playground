@@ -4,8 +4,17 @@ import React from 'react';
 import styled from 'styled-components';
 import tw from 'twin.macro';
 import Switch from 'react-switch';
+import { useRecoilState } from 'recoil';
 
 import CustomButtons from './CustomTools';
+
+import {
+  celebratorsNamesIsBold,
+  celebratorsNamesIsUnderline,
+  dateIsBold,
+  dateIsUnderline,
+} from '../recoil/themes';
+import { gifVersion } from 'canvas';
 
 const Container2 = styled.div`
   ${tw`
@@ -89,18 +98,20 @@ const CustomText = ({
   setFontFamilyGuild,
   fontFamilyGuild,
   align,
-  isBold,
-  isUnderline,
-  setIsBold,
-  setIsUnderline,
+  // isBold,
+  // isUnderline,
+  // setIsBold,
+  // setIsUnderline,
 }) => {
-  console.log(
-    'isBold,setIsBold,setIsUnderline,isUnderline',
-    isBold,
-    setIsBold,
-    setIsUnderline,
-    isUnderline,
+  const [celebratorsNamesFontIsBold, setCelebratorsNamesFontIsBold] =
+    useRecoilState(celebratorsNamesIsBold);
+
+  const [celebratorsNamesFontIsUnderline, setCelebratorsNamesFontIsUnderline] = useRecoilState(
+    celebratorsNamesIsUnderline,
   );
+  const [dateFontIsBold, setDateFontIsBold] = useRecoilState(dateIsBold);
+  const [dateFontIsUnderline, setDateFontIsUnderline] = useRecoilState(dateIsUnderline);
+
   return (
     <Container2>
       <Section1>
@@ -108,7 +119,7 @@ const CustomText = ({
         <label htmlFor='material-switch'>
           <Toggle>
             <Switch
-              checked={checked}
+              checked={checkedGuild || !!guildName?.length}
               onChange={handleChange}
               onColor='#666666'
               onHandleColor='#ffffff'
@@ -123,7 +134,7 @@ const CustomText = ({
           </Toggle>
         </label>
       </Section1>
-      {checked && (
+      {(checkedGuild || !!guildName?.length) && (
         <Section2>
           <FormFillup
             type='text'
@@ -145,10 +156,10 @@ const CustomText = ({
             align={align}
             FontId='custom-color-font-name'
             bgId='custom-color-bg-name'
-            isBold={isBold}
-            setIsBold={setIsBold}
-            isUnderline={isUnderline}
-            setIsUnderline={setIsUnderline}
+            isBold={dateFontIsBold}
+            setIsBold={setDateFontIsBold}
+            isUnderline={dateFontIsUnderline}
+            setIsUnderline={setDateFontIsUnderline}
           />
         </Section2>
       )}
@@ -158,7 +169,7 @@ const CustomText = ({
         <label htmlFor='material-switch'>
           <Toggle>
             <Switch
-              checked={checkedGuild}
+              checked={checked || !!userName?.length}
               onChange={handleChangeGuild}
               onColor='#666666'
               onHandleColor='#ffffff'
@@ -173,7 +184,7 @@ const CustomText = ({
           </Toggle>
         </label>
       </Section1>
-      {checkedGuild && (
+      {(checked || !!userName?.length) && (
         <Section2 style={{ paddingBottom: '20px' }}>
           <FormFillup
             type='text'
@@ -196,10 +207,10 @@ const CustomText = ({
             align={align}
             FontId='custom-color-font-guild'
             bgId='custom-color-bg-guild'
-            isBold={isBold}
-            isUnderline={isUnderline}
-            setIsBold={setIsBold}
-            setIsUnderline={setIsUnderline}
+            isBold={celebratorsNamesFontIsBold}
+            isUnderline={celebratorsNamesFontIsUnderline}
+            setIsBold={setCelebratorsNamesFontIsBold}
+            setIsUnderline={setCelebratorsNamesFontIsUnderline}
           />
         </Section2>
       )}

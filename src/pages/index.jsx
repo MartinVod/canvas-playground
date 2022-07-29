@@ -4,11 +4,9 @@ import React from 'react';
 import styled from 'styled-components';
 import tw from 'twin.macro';
 import { Link } from 'gatsby';
-import Helmet from 'react-helmet';
 
 // Components
 import Button from '../components/shared/Button';
-import Head from '../components/shared/Head';
 
 // Assets
 import home from '../../config/home';

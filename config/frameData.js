@@ -1,8 +1,52 @@
 /* eslint-disable max-len */
 // import FrameFour from '../images/frames/80c5a256bc55dc977a9d1a4c37d63dbb.jpeg';
-import FrameFour from '../images/frames/four.png';
-import FrameFive from '../images/frames/five.png';
-import FrameSix from '../images/frames/six.png';
+// import FrameFour from '../images/frames/four.png';
+// import FrameFive from '../images/frames/five.png';
+// import FrameSix from '../images/frames/six.png';
+
+import bg_1 from '../images/frames/bg_1.jpeg';
+import bg_2 from '../images/frames/bg_2.jpeg';
+import bg_3 from '../images/frames/bg_3.jpeg';
+import bg_4 from '../images/frames/bg_4.jpeg';
+import bg_5 from '../images/frames/bg_5.jpeg';
+import bg_6 from '../images/frames/bg_6.jpeg';
+import bg_7 from '../images/frames/bg_7.jpeg';
+
+import bg_8 from '../images/frames/bg_8.jpeg';
+import bg_9 from '../images/frames/bg_9.jpeg';
+import bg_10 from '../images/frames/bg_10.jpeg';
+import bg_11 from '../images/frames/bg_11.jpeg';
+import bg_12 from '../images/frames/bg_12.jpeg';
+import bg_13 from '../images/frames/bg_13.jpeg';
+import bg_14 from '../images/frames/bg_14.jpeg';
+import bg_15 from '../images/frames/bg_15.jpeg';
+import bg_16 from '../images/frames/bg_16.jpeg';
+import bg_17 from '../images/frames/bg_17.jpeg';
+import bg_18 from '../images/frames/bg_18.jpeg';
+import bg_19 from '../images/frames/bg_19.jpeg';
+import bg_20 from '../images/frames/bg_20.jpeg';
+import bg_21 from '../images/frames/bg_21.jpeg';
+import bg_22 from '../images/frames/bg_22.jpeg';
+import bg_23 from '../images/frames/bg_23.jpeg';
+import bg_24 from '../images/frames/bg_24.jpeg';
+import bg_25 from '../images/frames/bg_25.jpeg';
+import bg_27 from '../images/frames/bg_27.jpeg';
+import bg_28 from '../images/frames/bg_28.jpeg';
+import bg_29 from '../images/frames/bg_29.jpeg';
+import bg_30 from '../images/frames/bg_30.jpeg';
+import bg_31 from '../images/frames/bg_31.jpeg';
+import bg_34 from '../images/frames/bg_34.jpeg';
+import bg_35 from '../images/frames/bg_35.jpeg';
+import bg_36 from '../images/frames/bg_36.jpeg';
+import bg_37 from '../images/frames/bg_37.jpeg';
+import bg_38 from '../images/frames/bg_38.jpeg';
+import bg_39 from '../images/frames/bg_39.jpeg';
+import bg_40 from '../images/frames/bg_40.jpeg';
+import bg_41 from '../images/frames/bg_41.jpeg';
+import bg_42 from '../images/frames/bg_42.jpeg';
+import bg_43 from '../images/frames/bg_43.jpeg';
+import bg_44 from '../images/frames/bg_44.jpeg';
+import bg_45 from '../images/frames/bg_45.jpeg';
 
 //icons
 import a1 from '../images/icons/1_(1).png';
@@ -522,13 +566,50 @@ import a514 from '../images/icons/1_(514).png';
 
 export default {
   frames: {
-    ONE: 'https://res.cloudinary.com/sambitsankalp/image/upload/v1635430347/hacknitr/frameboi/frame-1_hdumwb.png',
-    TWO: 'https://res.cloudinary.com/sambitsankalp/image/upload/v1635430347/hacknitr/frameboi/frame-2_wvkuud.png',
-    THREE:
-      'https://res.cloudinary.com/sambitsankalp/image/upload/v1635430347/hacknitr/frameboi/frame-3_e8eseh.png',
-    FOUR: FrameFour,
-    FIVE: FrameFive,
-    SIX: FrameSix,
+    bg_1,
+    bg_2,
+    bg_3,
+    bg_4,
+    bg_5,
+    bg_6,
+    bg_7,
+    bg_8,
+    bg_9,
+    bg_10,
+    bg_11,
+    bg_12,
+    bg_13,
+    bg_14,
+    bg_15,
+    bg_16,
+    bg_17,
+    bg_18,
+    bg_19,
+    bg_20,
+    bg_21,
+    bg_22,
+    bg_23,
+    bg_24,
+    bg_25,
+
+    bg_27,
+    bg_28,
+    bg_29,
+    bg_30,
+    bg_31,
+
+    bg_34,
+    bg_35,
+    bg_36,
+    bg_37,
+    bg_38,
+    bg_39,
+    bg_40,
+    bg_41,
+    bg_42,
+    bg_43,
+    bg_44,
+    bg_45,
   },
 };
 
