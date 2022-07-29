@@ -3,7 +3,7 @@
  *
  * See: https://www.gatsbyjs.com/docs/browser-apis/
  */
-
+const React = require('react');
 const { RecoilRoot } = require('recoil');
 
 require('./src/styles/global.css');
@@ -14,8 +14,8 @@ exports.onClientEntry = () => {
 };
 
 module.exports.wrapRootElement = function ({ element }) {
-  return window.document.createElement(RecoilRoot, null, element);
+  return <RecoilRoot>{element}</RecoilRoot>;
 };
-module.exports.wrapRootElement = function ({ element, props }) {
-  return window.document.createElement(RecoilRoot, null, element);
+module.exports.wrapPageElement = function ({ element, props }) {
+  return <RecoilRoot>{element}</RecoilRoot>;
 };

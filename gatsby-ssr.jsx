@@ -1,4 +1,4 @@
-// const React = require('react');
+const React = require('react');
 const { RecoilRoot } = require('recoil');
 
 // Adds a class name to the body element
@@ -8,12 +8,13 @@ exports.onRenderBody = ({ setBodyAttributes }, pluginOptions) => {
   });
 };
 module.exports.wrapRootElement = function ({ element, props }) {
-  return window.document.createElement(RecoilRoot, props, element);
+  return <RecoilRoot>{element}</RecoilRoot>;
 };
 
 // Wraps every page in a component
 module.exports.wrapPageElement = function ({ element, props }) {
-  return window.document.createElement(RecoilRoot, props, element);
+  return <RecoilRoot>{element}</RecoilRoot>;
+
 };
 
 // exports.wrapPageElement = ({ element, props }) => {
