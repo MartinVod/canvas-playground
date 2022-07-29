@@ -14,6 +14,4 @@ exports.onClientEntry = () => {
   require('babel-polyfill');
 };
 
-exports.wrapPageElement = ({ element, props }) => {
-  return <RecoilRoot {...props}>{element}</RecoilRoot>;
-};
+module.exports.wrapRootElement = ({ element }) => document.createElement(RecoilRoot, null, element);
