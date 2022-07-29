@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Konva from 'konva';
 
 // Components
-import { Image, Transformer, Circle, Star } from 'react-konva';
+import { Image, Transformer, Circle, Star, Shape, Path } from 'react-konva';
 
 const TransformableImage = ({
   shapeProps,
@@ -96,6 +96,11 @@ const TransformableImage = ({
         y={initPosY + 100}
         radius={50}
         fillPatternImage={image}
+        fillPatternScaleY={600 / 480}
+        fillPatternScaleX={600 / 600}
+        fillPatternOffsetX={120}
+        fillPatternOffsetY={90}
+        fillPatternRepeat='no-repeat'
         width={237 / 1.05}
         height={237 / 1.05}
         strokeWidth={1} // border width
@@ -146,8 +151,67 @@ const TransformableImage = ({
         innerRadius={70}
         outerRadius={125}
         fillPatternImage={image}
+        fillPatternScaleY={600 / 480}
+        fillPatternScaleX={600 / 600}
+        fillPatternOffsetX={120}
+        fillPatternOffsetY={90}
+        fillPatternRepeat='no-repeat'
+        
         width={237 / 1.05}
         height={237 / 1.05}
+        strokeWidth={1} // border width
+        stroke='black' // border color
+        onClick={onSelect}
+        onTap={onSelect}
+        onMouseDown={onMouseDown}
+        onTouchStart={onTouchStart}
+        ref={shapeRef}
+        {...shapeProps}
+        draggable
+        onDragEnd={(e) => {
+          onChange({
+            ...shapeProps,
+            x: e.target.x(),
+            y: e.target.y(),
+          });
+        }}
+        onTransformEnd={() => {
+          if (shapeRef.current) {
+            const node = shapeRef.current;
+            onChange({
+              ...shapeProps,
+              x: node.x(),
+              y: node.y(),
+            });
+          }
+        }}
+      />
+      {isSelected && (
+        <Transformer
+          ref={trRef}
+          boundBoxFunc={(oldBox, newBox) => {
+            if (newBox.width < 5 || newBox.height < 5) {
+              return oldBox;
+            }
+            return newBox;
+          }}
+        />
+      )}
+    </>
+  ) : shape === 'heart' ? (
+    <>
+      <Path
+        x={initPosX}
+        y={initPosY}
+        data={'M0 200 v-200 h200 a100,100 90 0,1 0,200 a100,100 90 0,1 -200,0 z'}
+        fillPatternImage={image}
+        fillPatternScaleY={600 / 350}
+        // width={237 / 1.2}
+        // height={237 / 1.05}
+        scale={{
+          x: 0.7,
+          y: 0.7,
+        }}
         strokeWidth={1} // border width
         stroke='black' // border color
         onClick={onSelect}

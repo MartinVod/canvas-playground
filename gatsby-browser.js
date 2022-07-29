@@ -9,10 +9,10 @@ import React from 'react';
 
 require('./src/styles/global.css');
 
-// module.exports.onClientEntry = () => {
-//   // eslint-disable-next-line global-require
-//   require('babel-polyfill');
-// };
+export const onClientEntry = () => {
+  // eslint-disable-next-line global-require
+  require('babel-polyfill');
+};
 
 export const wrapPageElement = ({ element, props }) => (
   <RecoilRoot {...props}>{element}</RecoilRoot>

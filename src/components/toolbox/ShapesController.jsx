@@ -94,6 +94,12 @@ const ShapesController = () => {
         >
           כוכב
         </button>
+        <button
+          onClick={() => handleChooseShape('heart')}
+          style={{ opacity: imageShape === 'heart' ? 1 : 0.5 }}
+        >
+          לב
+        </button>
       </Section2>
     </Container2>
   );

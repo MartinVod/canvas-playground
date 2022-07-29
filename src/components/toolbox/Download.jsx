@@ -217,9 +217,9 @@ const Download = ({
       <DownloadContainer>
         <Button onClick={handleSaveTheme}>שמור עיצוב</Button>
       </DownloadContainer>
-      <DownloadContainer>
+      {/* <DownloadContainer>
         <Button onClick={handleResetStrip}>נקה תמונות</Button>
-      </DownloadContainer>
+      </DownloadContainer> */}
       <DownloadContainer>
         <Button onClick={() => {}}>שחור לבן</Button>
       </DownloadContainer>

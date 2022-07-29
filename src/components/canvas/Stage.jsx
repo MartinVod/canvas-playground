@@ -255,6 +255,7 @@ const CanvasStage = ({
             selectShape1(renderImgBottom[0].id);
           }}
           onChange={(newAttrs) => {
+            console.log('newAttrs',newAttrs)
             setmageBottomPositionX(newAttrs.x);
             setmageBottomPositionY(newAttrs.y);
             const imgs = tranImgBottom.slice();
