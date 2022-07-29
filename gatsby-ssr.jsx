@@ -11,6 +11,9 @@ exports.onRenderBody = ({ setBodyAttributes }, pluginOptions) => {
 // Wraps every page in a component
 module.exports.wrapPageElement = ({ element, props }) =>
   document.createElement(RecoilRoot, null, element);
+module.exports.wrapRootElement = ({ element, props }) =>
+  document.createElement(RecoilRoot, null, element);
+
 
 // exports.wrapPageElement = ({ element, props }) => {
 //   return <RecoilRoot {...props}>{element}</RecoilRoot>;

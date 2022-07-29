@@ -15,3 +15,5 @@ exports.onClientEntry = () => {
 };
 
 module.exports.wrapRootElement = ({ element }) => document.createElement(RecoilRoot, null, element);
+module.exports.wrapRootElement = ({ element, props }) =>
+  document.createElement(RecoilRoot, null, element);
