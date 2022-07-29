@@ -148,3 +148,7 @@ export const cleanImages = atom({
   key: 'cleanImages',
   default: true,
 });
+export const imageShape = atom({
+  key: 'imageShape',
+  default: 'square',
+});

@@ -2,8 +2,7 @@ import React, { useState } from 'react';
 import Konva from 'konva';
 
 // Components
-import { Image, Transformer } from 'react-konva';
-
+import { Image, Transformer, Circle } from 'react-konva';
 
 const TransformableImage = ({
   shapeProps,
@@ -18,6 +17,7 @@ const TransformableImage = ({
   initPosX,
   initPosY,
   noImage,
+  shape,
 }) => {
   const shapeRef = React.useRef();
   const trRef = React.useRef();
@@ -38,11 +38,11 @@ const TransformableImage = ({
     }
   }, [isSelected, image]);
 
-  return (
+  return shape === 'square' ? (
     <>
       <Image
         shadowBlur={5}
-        opacity={noImage ? 0 : 1}
+        // opacity={noImage ? 0 : 1}
         width={237}
         height={237}
         image={image}
@@ -89,6 +89,56 @@ const TransformableImage = ({
         />
       )}
     </>
+  ) : shape === 'circle' ? (
+    <>
+      <Circle
+        x={initPosX}
+        y={initPosY}
+        radius={50}
+        fill='green'
+        width={237}
+        height={237}
+        strokeWidth={1} // border width
+        stroke='black' // border color
+        onClick={onSelect}
+        onTap={onSelect}
+        onMouseDown={onMouseDown}
+        onTouchStart={onTouchStart}
+        ref={shapeRef}
+        {...shapeProps}
+        draggable
+        onDragEnd={(e) => {
+          onChange({
+            ...shapeProps,
+            x: e.target.x(),
+            y: e.target.y(),
+          });
+        }}
+        onTransformEnd={() => {
+          if (shapeRef.current) {
+            const node = shapeRef.current;
+            onChange({
+              ...shapeProps,
+              x: node.x(),
+              y: node.y(),
+            });
+          }
+        }}
+      />
+      {isSelected && (
+        <Transformer
+          ref={trRef}
+          boundBoxFunc={(oldBox, newBox) => {
+            if (newBox.width < 5 || newBox.height < 5) {
+              return oldBox;
+            }
+            return newBox;
+          }}
+        />
+      )}
+    </>
+  ) : (
+    <></>
   );
 };
 

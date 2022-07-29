@@ -8,6 +8,7 @@ import Upload from '../toolbox/Upload';
 import CustomText from '../toolbox/InputText';
 import BackgroundController from '../toolbox/BackgroundController';
 import ThemesController from '../toolbox/ThemesController';
+import ShapesController from '../toolbox/ShapesController';
 
 const Inputs = ({
   checked,
@@ -107,6 +108,7 @@ const Inputs = ({
         {...{ stageBgColor, setStageBgColor, colorOrImage, setColorOrImage, setSelectedFrame }}
       />
       <ThemesController />
+      <ShapesController />
     </div>
   );
 };

@@ -21,6 +21,7 @@ import {
   datePositionY as datePositionYInStore,
   celebratorsPositionX as celebratorsPositionXInStore,
   celebratorsPositionY as celebratorsPositionYInStore,
+  imageShape as shape,
   cleanImages,
 } from '../recoil/themes';
 
@@ -100,6 +101,7 @@ const CanvasStage = ({
   );
 
   const [noImage, setNoImage] = useRecoilState(cleanImages);
+  const [imageShape , setImageShape] = useRecoilState(shape);
 
   const rect = [
     {
@@ -210,6 +212,7 @@ const CanvasStage = ({
             initPosX={imagePositionX}
             initPosY={imagePositionY}
             noImage={noImage}
+            shape={imageShape}
             // setInitPosX={setimagePositionX}
             // setInitPosY={setimagePositionY}
           />

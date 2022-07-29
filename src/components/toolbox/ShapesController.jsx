@@ -1,5 +1,9 @@
 import React from 'react';
 
+import { useRecoilState } from 'recoil';
+
+import { imageShape as shape } from '../recoil/themes';
+
 // Libraries
 import styled from 'styled-components';
 import tw from 'twin.macro';
@@ -58,18 +62,35 @@ const CarouselC = styled.h1`
   max-height: 200px;
 `;
 
-const ThemesController = () => {
+const ShapesController = () => {
+  const [imageShape, setImageShape] = useRecoilState(shape);
+
+  const handleChooseShape = (shape) => {
+    setImageShape(shape);
+  };
+
   return (
     <Container2>
       <Section1>
-        <Heading1>עיצובים שמורים</Heading1>
+        <Heading1>צורות </Heading1>
       </Section1>
-      <ThemesSelector />
+
       <Section2 style={{ paddingBottom: '20px' }}>
-        <CarouselC></CarouselC>
+        <button
+          onClick={() => handleChooseShape('square')}
+          style={{ opacity: imageShape === 'square' ? 1 : 0.5 }}
+        >
+          ריבוע
+        </button>
+        <button
+          onClick={() => handleChooseShape('circle')}
+          style={{ opacity: imageShape === 'circle' ? 1 : 0.5 }}
+        >
+          עיגול
+        </button>
       </Section2>
     </Container2>
   );
 };
 
-export default ThemesController;
+export default ShapesController;
