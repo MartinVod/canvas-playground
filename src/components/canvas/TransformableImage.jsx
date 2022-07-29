@@ -92,12 +92,12 @@ const TransformableImage = ({
   ) : shape === 'circle' ? (
     <>
       <Circle
-        x={initPosX}
-        y={initPosY}
+        x={initPosX + 150}
+        y={initPosY + 160}
         radius={50}
-        fill='green'
-        width={237}
-        height={237}
+        fillPatternImage={image}
+        width={237 / 1.05}
+        height={237 / 1.05}
         strokeWidth={1} // border width
         stroke='black' // border color
         onClick={onSelect}

@@ -101,7 +101,7 @@ const CanvasStage = ({
   );
 
   const [noImage, setNoImage] = useRecoilState(cleanImages);
-  const [imageShape , setImageShape] = useRecoilState(shape);
+  const [imageShape, setImageShape] = useRecoilState(shape);
 
   const rect = [
     {
@@ -238,6 +238,7 @@ const CanvasStage = ({
           initPosX={imageMiddlePositionX}
           initPosY={imageMiddlePositionY}
           noImage={noImage}
+          shape={imageShape}
 
           // setInitPosX={setmageMiddlePositionX}
           // setInitPosY={setmageMiddlePositionY}
@@ -263,6 +264,7 @@ const CanvasStage = ({
           initPosX={imageBottomPositionX}
           initPosY={imageBottomPositionY}
           noImage={noImage}
+          shape={imageShape}
 
           // setInitPosX={setmageBottomPositionX}
           // setInitPosY={setmageBottomPositionY}
