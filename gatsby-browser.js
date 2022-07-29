@@ -14,8 +14,8 @@ exports.onClientEntry = () => {
 };
 
 module.exports.wrapRootElement = function ({ element }) {
-  return document.createElement(RecoilRoot, null, element);
+  return window.document.createElement(RecoilRoot, null, element);
 };
 module.exports.wrapRootElement = function ({ element, props }) {
-  return document.createElement(RecoilRoot, null, element);
+  return window.document.createElement(RecoilRoot, null, element);
 };
